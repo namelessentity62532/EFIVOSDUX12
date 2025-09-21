@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Skills - TeenLife</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-lg sticky top-0 z-50 flex justify-between p-4">
+        <div class="flex items-center space-x-2">
+            <i data-feather="life-buoy" class="h-8 w-8 text-indigo-600"></i>
+            <span class="text-xl font-bold gradient-text">TeenLife</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="index.html" class="text-indigo-600 hover:text-indigo-800 font-medium">Home</a>
+            <a href="goal.html" class="text-gray-600 hover:text-indigo-600">Goal Setting</a>
+            <a href="study.html" class="text-gray-600 hover:text-indigo-600">Study</a>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto py-12 px-4">
+        <h1 class="text-4xl font-extrabold gradient-text text-center">Social Skills</h1>
+        <p class="mt-4 text-gray-700 text-center">Learn how to communicate effectively, make friends, and navigate
+            social situations confidently.</p>
+
+        <div class="mt-10 grid gap-8 md:grid-cols-2">
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <h2 class="text-2xl font-bold">Active Listening</h2>
+                <p class="mt-2 text-gray-600">
+                    Pay attention, ask questions, and show empathy. Active listening makes people feel valued and
+                    improves relationships.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <h2 class="text-2xl font-bold">Social Practice</h2>
+                <p class="mt-2 text-gray-600">Choose a scenario and practice:</p>
+                <select id="scenarioSelect" class="mt-2 w-full border-gray-300 rounded p-2">
+                    <option value="">--Pick a Scenario--</option>
+                    <option value="friend">Introducing yourself to a new friend</option>
+                    <option value="group">Joining a group conversation</option>
+                    <option value="conflict">Resolving a disagreement politely</option>
+                </select>
+                <button id="practiceBtn"
+                    class="mt-2 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Practice</button>
+                <p class="mt-4 text-gray-700" id="scenarioOutput"></p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow card-hover md:col-span-2">
+                <h2 class="text-2xl font-bold">Tips for Social Success</h2>
+                <ul class="list-disc list-inside mt-2 text-gray-600">
+                    <li>Smile and maintain open body language</li>
+                    <li>Ask questions and show interest</li>
+                    <li>Be kind and respectful, even in disagreements</li>
+                    <li>Join clubs or groups to meet like-minded peers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const practiceBtn = document.getElementById('practiceBtn');
+        const scenarioOutput = document.getElementById('scenarioOutput');
+
+        practiceBtn.addEventListener('click', () => {
+            const scenario = document.getElementById('scenarioSelect').value;
+            if (!scenario) {
+                scenarioOutput.textContent = "Please select a scenario.";
+                return;
+            }
+            let message = "";
+            if (scenario === "friend") {
+                message = "Say: 'Hi! I'm [Your Name], nice to meet you!' and ask a question about them.";
+            } else if (scenario === "group") {
+                message = "Listen first, then add a comment or question to join the conversation naturally.";
+            } else if (scenario === "conflict") {
+                message = "Stay calm, listen to their perspective, and say: 'I understand your point, can we find a solution together?'";
+            }
+            scenarioOutput.textContent = message;
+        });
+        feather.replace();
+    </script>
+
+</body>
+
+</html>
